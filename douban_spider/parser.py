@@ -32,8 +32,6 @@ class HtmlParser(object):
                     ds.append(d)
 
             director = '/'.join(ds)
-            print "@@@#####", director
-
 
             if title and year and director and rating_num:
                 if title.string and year.string and director and rating_num.string:
