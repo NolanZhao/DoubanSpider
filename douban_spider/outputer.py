@@ -7,7 +7,7 @@ class HtmlOutputer(object):
         self.datas = []
 
     def collect_data(self, data):
-        if len(data) != 0:
+        if len(data) != 0 and data['title'] not in [self.datas[i]['title'] for i in range(len(self.datas))]:
             self.datas.append(data)
 
 
@@ -23,7 +23,7 @@ class HtmlOutputer(object):
 
         import csv
 
-        csvfile = open('douban_film.csv', 'wb')
+        csvfile = open('douban_film.csv', 'wb+')
         csvfile.write(codecs.BOM_UTF8)
 
         writer = csv.writer(csvfile)

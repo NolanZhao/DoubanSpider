@@ -25,12 +25,13 @@ class SpiderMain(object):
 
             self.urls.add_new_urls(new_url)
             self.outputer.collect_data(new_data)
+            self.outputer.output_html()
 
-            if count == 20:
+            if count == 200:
                 break
             count += 1
 
-        self.outputer.output_html()
+        # self.outputer.output_html()
 
 
 if __name__ == "__main__":

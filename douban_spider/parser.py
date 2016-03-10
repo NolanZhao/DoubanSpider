@@ -7,7 +7,7 @@ class HtmlParser(object):
 
     def _get_new_urls(self, page_url, soup):
         new_urls = set()
-        links = soup.find_all('a', href=re.compile(r"https://movie.douban.com/subject/\d*/\?from=showing"))
+        links = soup.find_all('a', href=re.compile(r"https://movie.douban.com/subject/\d*/\?[tag|from]"))
         for link in links:
             new_url = link['href']
             new_full_url = urlparse.urljoin(page_url, new_url)
@@ -22,14 +22,24 @@ class HtmlParser(object):
         if soup:
             title = soup.find('span', property="v:itemreviewed")
             year = soup.find('span', class_='year')
-            director = soup.find('span', class_='attrs')
+            directors = soup.find_all('a', rel="v:directedBy")
             rating_num = soup.find('strong', property="v:average")
 
+            ds = []
+            for item in directors:
+                if item.string:
+                    d = item.string
+                    ds.append(d)
+
+            director = '/'.join(ds)
+            print "@@@#####", director
+
+
             if title and year and director and rating_num:
-                if title.string and year.string and director.string and rating_num.string:
+                if title.string and year.string and director and rating_num.string:
                     res_data['title'] = title.string
                     res_data['year'] = year.string[1:-1]
-                    res_data['director'] = director.string
+                    res_data['director'] = director
                     res_data['rating_num'] = rating_num.string
 
             return res_data
