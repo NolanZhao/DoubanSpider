@@ -1,10 +1,7 @@
 # DoubanSpider
 #### This is a spider which can crawl douban.com
+* Start
+`python spider_main.py`
 
-#### Bugs:
-1. 404 problems when it run some while
-
-#### To-do:
-1. Crawl other forums not only movie
-2. Restore in MongoDB
-3. Add data column
+* data collected in file `douban_film.csv` which can be open by MS Office Excel
+ OR you can modify outputer.py to save data in output.txt in other format.
