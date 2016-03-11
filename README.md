@@ -1,5 +1,5 @@
 # DoubanSpider
-#### This is a spider which can crawl douban.com
+#### This is a spider which can crawl movie.douban.com
 * Start
 `python spider_main.py`
 
