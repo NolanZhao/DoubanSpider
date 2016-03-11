@@ -1,6 +1,6 @@
 # DoubanSpider
 #### This is a spider which can crawl movie.douban.com
-* Start
+* Start:
 `python spider_main.py`
 
 * data collected in file `douban_film.csv` which can be open by MS Office Excel
